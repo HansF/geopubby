@@ -1,45 +1,46 @@
 function init() {
-	init_long_literals();
+	initLongLiterals();
 }
 
-var long_literal_counter = 0;
-var long_literal_spans = {};
-var long_literal_texts = {};
-function init_long_literals() {
-    var spans = document.getElementsByTagName('span');
-    for (i = 0; i < spans.length; i++) {
-        if (spans[i].className != 'literal') continue;
-        var span = spans[i];
-        var textNode = span.firstChild;
-        var text = textNode.data;
-         if ((typeof text === 'undefined') || text.length < 300) continue;
-        var match = text.match(/([^\0]{150}[^\0]*? )([^\0]*)/);
+let longLiteralCounter = 0;
+const longLiteralSpans = {};
+const longLiteralTexts = {};
+
+function initLongLiterals() {
+    const spans = document.getElementsByTagName('span');
+    for (let i = 0; i < spans.length; i++) {
+        if (spans[i].className !== 'literal') continue;
+        const span = spans[i];
+        const textNode = span.firstChild;
+        const text = textNode.data;
+        if ((typeof text === 'undefined') || text.length < 300) continue;
+        const match = text.match(/([^\0]{150}[^\0]*? )([^\0]*)/);
         if (!match) continue;
         span.insertBefore(document.createTextNode(match[1] + ' ... '), span.firstChild);
         span.removeChild(textNode);
-        var link = document.createElement('a');
-        link.href = 'javascript:expand(' + long_literal_counter + ');';
+        const link = document.createElement('a');
+        link.href = 'javascript:expand(' + longLiteralCounter + ');';
         link.appendChild(document.createTextNode('\u00BBmore\u00BB'));
         link.className = 'expander';
         span.insertBefore(link, span.firstChild.nextSibling);
-        long_literal_spans[long_literal_counter] = span;
-        long_literal_texts[long_literal_counter] = textNode;
-        long_literal_counter = long_literal_counter + 1;
+        longLiteralSpans[longLiteralCounter] = span;
+        longLiteralTexts[longLiteralCounter] = textNode;
+        longLiteralCounter = longLiteralCounter + 1;
     }
 }
 
 function expand(i) {
-    var span = long_literal_spans[i];
+    const span = longLiteralSpans[i];
     span.removeChild(span.firstChild);
     span.removeChild(span.firstChild);
-    span.insertBefore(long_literal_texts[i], span.firstChild);
+    span.insertBefore(longLiteralTexts[i], span.firstChild);
 }
 
 function showAllMetadata(name) {
-	var ele = document.getElementById(name);
-	if (ele == null) return;
-	var tables = document.getElementsByTagName('table');
-	for (i = 0; i < tables.length; i++) {
+	const ele = document.getElementById(name);
+	if (ele === null) return;
+	const tables = document.getElementsByTagName('table');
+	for (let i = 0; i < tables.length; i++) {
 		tables[i].style.display = 'block';
 	}
 }

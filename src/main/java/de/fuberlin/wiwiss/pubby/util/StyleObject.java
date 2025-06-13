@@ -244,18 +244,18 @@ public class StyleObject {
 		builder.append("sh:subject sh:this ;"+System.lineSeparator());
 		builder.append("sh:predicate geo:style ;"+System.lineSeparator());
 		builder.append("sh:object "+targetStyle+" ; "+System.lineSeparator());
-		for(Condition cond:conditions) {
+		for (Condition cond : conditions) {
 			builder.append(cond.toSHACL());
 		}
 		builder.append("]."+System.lineSeparator());
 		return builder.toString();
 	}
 	
-	public String mapToCSS(Map<String,String> map){
-		StringBuilder result=new StringBuilder();
+	public String mapToCSS(Map<String, String> map) {
+		StringBuilder result = new StringBuilder();
 		result.append("\"");
-		for(String key:map.keySet()) {
-			result.append(key+":"+map.get(key)+";");
+		for (String key : map.keySet()) {
+			result.append(key + ":" + map.get(key) + ";");
 		}
 		result.append("\"");
 		return result.toString();

@@ -1,4 +1,4 @@
-var namespaces={
+const namespaces = {
   "madsrdf": "http://www.loc.gov/mads/rdf/v1#",
   "bflc": "http://id.loc.gov/ontologies/bflc/",
   "foaf": "http://xmlns.com/foaf/0.1/",

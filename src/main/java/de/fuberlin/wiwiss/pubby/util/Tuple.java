@@ -21,16 +21,17 @@ public class Tuple<T,T2> implements Comparable{
     
     @Override
     public int compareTo(Object o) {
-        Tuple t=(Tuple) o;
-        if(t.two== this.two && this.one==t.one)
+        Tuple t = (Tuple) o;
+        if (t.two == this.two && this.one == t.one)
             return 0;
         return 1;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof Tuple)
-            return this.one.equals(((Tuple)obj).one) && this.two.equals(((Tuple)obj).two);
+        if (obj instanceof Tuple) {
+            return this.one.equals(((Tuple) obj).one) && this.two.equals(((Tuple) obj).two);
+        }
         return false;
     }
 

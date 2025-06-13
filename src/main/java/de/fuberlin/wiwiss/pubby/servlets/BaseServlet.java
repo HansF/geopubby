@@ -1,4 +1,5 @@
 package de.fuberlin.wiwiss.pubby.servlets;
+
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
@@ -9,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.velocity.context.Context;
-
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.rdf.model.ModelFactory;
 import org.apache.jena.rdf.model.Resource;
@@ -18,6 +17,7 @@ import org.apache.jena.shared.PrefixMapping;
 import org.apache.jena.sparql.vocabulary.FOAF;
 import org.apache.jena.vocabulary.OWL;
 import org.apache.jena.vocabulary.RDFS;
+import org.apache.velocity.context.Context;
 
 import de.fuberlin.wiwiss.pubby.Configuration;
 import de.fuberlin.wiwiss.pubby.Dataset;
@@ -25,6 +25,7 @@ import de.fuberlin.wiwiss.pubby.HypermediaControls;
 import de.fuberlin.wiwiss.pubby.MappedResource;
 import de.fuberlin.wiwiss.pubby.MetadataConfiguration;
 import de.fuberlin.wiwiss.pubby.ModelUtil;
+
 import de.fuberlin.wiwiss.pubby.servlets.ServletContextInitializer;
 import de.fuberlin.wiwiss.pubby.servlets.VelocityHelper;
 
@@ -41,12 +42,12 @@ public abstract class BaseServlet extends HttpServlet {
 	public void init() throws ServletException {
 		config = (Configuration) getServletContext().getAttribute(
 				ServletContextInitializer.SERVER_CONFIGURATION);
-			if(config==null){
-					initError = (String) getServletContext().getAttribute(
+		if (config == null) {
+			initError = (String) getServletContext().getAttribute(
 					ServletContextInitializer.ERROR_MESSAGE);
-			}else {
-				initError=null;
-			}
+		} else {
+			initError = null;
+		}
 	}
 	
 	// TODO: This should be somewhere else, doesn't fit here

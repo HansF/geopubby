@@ -53,18 +53,18 @@ public class ServletContextInitializer implements ServletContextListener {
 				System.out.println("Got new server configuration!");
 			} catch (JenaException ex) {
 				ex.printStackTrace();
-			    if(ex.getCause()!=null){
+			    if (ex.getCause() != null) {
 			        				throw new ConfigurationException(
 						"Error parsing configuration file <" + url + ">: " + 
-						ex.getMessage()+"\nCause: "+ex.getCause().getMessage());
+						ex.getMessage() + "\nCause: " + ex.getCause().getMessage());
 			        	
-			    }else{
+			} else {
 			        StringWriter sw = new StringWriter();
                     PrintWriter pw = new PrintWriter(sw);
                     ex.printStackTrace(pw);
 				throw new ConfigurationException(
 						"Error parsing configuration file <" + url + ">: " + 
-						ex.getMessage()+"\n"+sw.toString());			        
+						ex.getMessage() + "\n" + sw.toString());			        
 			    }
 
 			}

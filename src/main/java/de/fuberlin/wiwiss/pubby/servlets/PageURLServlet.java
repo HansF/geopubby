@@ -38,9 +38,9 @@ public class PageURLServlet extends BaseServlet {
 		context.put("project_name", config.getProjectName());
 		context.put("project_link", config.getProjectLink());
 		context.put("uri", description.getURI());
-		List<String> sources=new LinkedList<String>();
-		List<String> sourceURLs=new LinkedList<String>();
-		for(Dataset ds:config.getDatasets()) {
+		List<String> sources = new LinkedList<String>();
+		List<String> sourceURLs = new LinkedList<String>();
+		for (Dataset ds : config.getDatasets()) {
 			sources.add(ds.sparqlEndpoint);
 			sourceURLs.add(ds.datasetBase);
 		}
@@ -54,11 +54,11 @@ public class PageURLServlet extends BaseServlet {
 		context.put("properties", description.getProperties());
 		context.put("showLabels", config.showLabels());
 		context.put("geoms",description.getGeoms());
-		context.put("epsg",description.getEPSG());
-		GeoJSONCSSFormatter form=new GeoJSONCSSFormatter();
-		JSONArray htmlArray=new JSONArray();
-		if(description.getStyle()!=null && !description.getStyle().isEmpty()) {
-			for(StyleObject obj:description.getStyle()) {
+		context.put("epsg", description.getEPSG());
+		GeoJSONCSSFormatter form = new GeoJSONCSSFormatter();
+		JSONArray htmlArray = new JSONArray();
+		if (description.getStyle() != null && !description.getStyle().isEmpty()) {
+			for (StyleObject obj : description.getStyle()) {
 				context.put("style", obj.toHTML());				
 				htmlArray.put(form.formatForWebView(obj));
 			}

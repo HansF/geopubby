@@ -124,7 +124,7 @@ public class Dataset extends ResourceReader {
 					// absolute.
 					for (String prefix: m.getNsPrefixMap().keySet()) {
 						String uri=m.getNsPrefixMap().get("prefix");
-						if(uri.contains("file:/")) {
+						if (uri.contains("file:/")) {
 							data.setNsPrefix(prefix, uri.toString().replace("file:/", base));	
 						}
 					}
